@@ -15,26 +15,20 @@ version = "0.1.0"
 edition = "2024"
 license = "AGPL-3.0-or-later"
 repository = "https://github.com/IlleNilsson/xmip-core-sdk"
-description = "What a provider builds against: every trait a module implements, and the export over the C ABI's tables (ADR-0061)."
+description = "Simulators and emulators: the media a module is tested on, in process — a serial multi-drop bus first (ADR-0061)."
 publish = false
 
 [lib]
 path = "src/lib.rs"
 
 [dependencies]
-# Inside the estate the SDK tracks main like every crate (ADR-0021); a provider
-# outside it pins a tag, sdk-v<major>.<minor>.<patch> (ADR-0061).
-xcore = { package = "xmip-core", git = "https://github.com/IlleNilsson/xmip-core", branch = "main" }
-stream = { package = "xmip-core-stream", git = "https://github.com/IlleNilsson/xmip-core-stream", branch = "main" }
-# The C boundary the export stands on: the header's tables, mirrored in Rust
-# (ADR-0061, decision 4).
-xmip_core_abi = { package = "xmip-core-abi", git = "https://github.com/IlleNilsson/xmip-core-abi", branch = "main" }
+# The line a simulated bus is, and the failures it answers in: the transport
+# capability's, which every technology on a simulated medium already uses.
+transport = { package = "xmip-core-transport", git = "https://github.com/IlleNilsson/xmip-core-transport", branch = "main" }
 
 [lints.rust]
-# deny, not forbid: the export modules stand on the far side of the C boundary
-# and allow it, each block with a SAFETY comment (ADR-0061, decision 8).
-# Everything else in the SDK writes none, and a provider's crate forbids it.
-unsafe_code = "deny"
+# A simulator has no business writing unsafe.
+unsafe_code = "forbid"
 
 [lints.clippy]
 # Warned, never denied. doc/governance/rust-style.md section 3: a function

@@ -1,20 +1,19 @@
-#![deny(unsafe_code)]
+#![forbid(unsafe_code)]
 
-//! What a provider builds against (ADR-0061): every trait a module
-//! implements, one module per kind of module, and — as each kind is loaded
-//! through the C ABI — the export that wraps a Rust implementation in the
-//! table `xmip-core-abi` declares for it.
+//! Simulators and emulators: the media a module is tested on, in process,
+//! with no hardware and no network (ADR-0061, as amended 2026-09-24).
 //!
-//! Core's own technologies implement the same traits from here, so there is
-//! one definition of each. A provider takes this crate at a versioned tag,
-//! `sdk-v<major>.<minor>.<patch>`; a module it loads through the ABI is a
-//! separate work under any license (ADR-0061, decision 6).
+//! A protocol is proved on the medium it rides — addresses, silence,
+//! collisions, turnaround, lost characters — and a medium is nobody's
+//! protocol, so it is here rather than in any one technology. Core's
+//! technologies are proved on these, and so is a provider's. An end user may
+//! select one too, where a line is to be simulated rather than wired.
+//!
+//! What each module simulates:
+//!
+//! - [`serial`] — a multi-drop serial bus: RS-485 and the field buses on it.
+//!
+//! The traits a module implements are not here: each belongs to its
+//! capability (`xmip-core-transport`, `xmip-core-contract`, ...).
 
-pub mod contract;
-
-// The Foundation types the traits are written in. A provider takes them from
-// here, at the SDK's tag, so the one crate it pins is the one it builds
-// against; depending on `xmip-core-stream` beside it at `main` would bring back
-// the churn a tag exists to stop (ADR-0061, decision 5).
-pub use stream::Stream;
-pub use xcore::StreamId;
+pub mod serial;
