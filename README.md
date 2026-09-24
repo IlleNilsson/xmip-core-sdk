@@ -19,9 +19,10 @@ a contract implements `xmip-core-contract`'s, a transport
 | Module | Simulates | Used by |
 | --- | --- | --- |
 | `sdk::serial` | a multi-drop serial bus: addressed devices, silence, collision, turnaround, unsolicited frames, a lost character, a break | M-Bus meters, HART field devices |
+| `sdk::broadcast` | a medium every node hears: every other node gets each frame, the sender does not, a frame nobody hears is not acknowledged, frames lost on demand | CAN (can-bus, CANopen, ISO-TP, J1939, OBD-II, UDS) |
 
-On the way, in open problems 24 and 27: the CAN bus, the radios a wireless
-protocol speaks over, and the local ACME server.
+On the way, in open problems 24 and 27: the radios a wireless protocol speaks
+over, and the local ACME server.
 
 ## A device on the serial bus
 

@@ -12,8 +12,11 @@
 //! What each module simulates:
 //!
 //! - [`serial`] — a multi-drop serial bus: RS-485 and the field buses on it.
+//! - [`broadcast`] — a medium every node hears: a CAN bus, an Ethernet
+//!   segment, the air.
 //!
 //! The traits a module implements are not here: each belongs to its
 //! capability (`xmip-core-transport`, `xmip-core-contract`, ...).
 
+pub mod broadcast;
 pub mod serial;
