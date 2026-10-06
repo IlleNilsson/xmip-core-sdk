@@ -1,8 +1,10 @@
 # xmip-core-sdk
 
 Simulators and emulators: the media a module is tested on, in process, with no
-hardware and no network. And, for now, the local ACME server the identity tests
-obtain certificates from ([ADR-0061](https://github.com/IlleNilsson/Xmip/blob/main/doc/decision/ADR-0061-a-provider-builds-against-the-sdk.md)).
+hardware and no network. And, once it is written, the local ACME server the
+identity tests are to obtain certificates from
+([ADR-0061](https://github.com/IlleNilsson/Xmip/blob/main/doc/decision/ADR-0061-a-provider-builds-against-the-sdk.md);
+[decided, not built](../doc/architecture/estate-map.md#certificate-provisioning)).
 
 A protocol is proved on the medium it rides: addresses, silence, collisions,
 turnaround, lost characters. A medium belongs to no one protocol, so it lives
