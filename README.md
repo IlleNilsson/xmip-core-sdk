@@ -1,10 +1,13 @@
 # xmip-core-sdk
 
 Simulators and emulators: the media a module is tested on, in process, with no
-hardware and no network. And, once it is written, the local ACME server the
-identity tests are to obtain certificates from
+hardware and no network. ADR-0061 placed a local ACME server for the identity
+tests here too; none is written, because the cluster's own authority,
+`xmip-core-provision-internal-ca`, answers ACME and its tests obtain
+certificates from it offline
 ([ADR-0061](https://github.com/IlleNilsson/Xmip/blob/main/doc/decision/ADR-0061-a-provider-builds-against-the-sdk.md);
-[decided, not built](../doc/architecture/estate-map.md#certificate-provisioning)).
+[built, not in the assembled service](../doc/architecture/estate-map.md#certificate-provisioning)).
+Whether the SDK still holds one is the owner's to say.
 
 A protocol is proved on the medium it rides: addresses, silence, collisions,
 turnaround, lost characters. A medium belongs to no one protocol, so it lives
@@ -23,8 +26,7 @@ a contract implements `xmip-core-contract`'s, a transport
 | `sdk::serial` | a multi-drop serial bus: addressed devices, silence, collision, turnaround, unsolicited frames, a lost character, a break | M-Bus meters, HART field devices |
 | `sdk::broadcast` | a medium every node hears: every other node gets each frame, the sender does not, a frame nobody hears is not acknowledged, frames lost on demand | CAN (can-bus, CANopen, ISO-TP, J1939, OBD-II, UDS) |
 
-On the way, in open problems 24 and 27: the radios a wireless protocol speaks
-over, and the local ACME server.
+On the way, in open problem 24: the radios a wireless protocol speaks over.
 
 ## A device on the serial bus
 
