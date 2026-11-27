@@ -44,7 +44,3 @@ bus.attach(Arc::new(Meter));
 
 `xmip-core-transport-m-bus` and `xmip-core-transport-hart` in the estate are
 complete examples, with two devices on one bus.
-
-## Toolchain
-
-`rust-toolchain.toml` is the estate's toolchain; rustup reads it.
