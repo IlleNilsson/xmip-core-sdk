@@ -13,7 +13,7 @@ path = "src/lib.rs"
 [dependencies]
 # The line a simulated bus is, and the failures it answers in: the transport
 # capability's, which every technology on a simulated medium already uses.
-transport = { package = "xmip-core-transport", git = "https://github.com/IlleNilsson/xmip-core-transport", branch = "main" }
+transport = { workspace = true }
 
 [lints]
 workspace = true
